@@ -3,17 +3,17 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
 class CreateUserRequest(BaseModel):
-    username: str
+    username: str = Field(min_length=5, max_length=20)
     email: EmailStr
-    full_name: str
+    full_name: str = Field(min_length=5, max_length=20)
     password: str = Field(min_length=8, max_length=15)
     user_role: str
 
 
 class ChangeInfo(BaseModel):
-    username: str
-    email: str
-    full_name: str
+    username: str = Field(min_length=5, max_length=20)
+    email: EmailStr
+    full_name: str = Field(min_length=5, max_length=20)
 
 
 class Token(BaseModel):
@@ -22,14 +22,19 @@ class Token(BaseModel):
 
 
 class CreateProjectRequest(BaseModel):
-    title: str
-    description: str
+    title: str = Field(min_length=5, max_length=20)
+    description: str = Field(min_length=8, max_length=50)
     budget: int = Field(gt=0)
 
 
 class CreateBidRequest(BaseModel):
     price: float = Field(gt=0)
-    message: str
+    message: str = Field(min_length=5, max_length=50)
+
+
+class CreateRatingRequest(BaseModel):
+    score: int = Field(ge=1, le=10)
+    comment: str
 
 
 class UserResponse(BaseModel):
@@ -89,8 +94,3 @@ class FreelancerDashboardResponse(BaseModel):
     projects_completed: int
     active_projects: int
     rating: float
-
-
-class CreateRatingRequest(BaseModel):
-    score: int = Field(ge=1, le=10)
-    comment: str

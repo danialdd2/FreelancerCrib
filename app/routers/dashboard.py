@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 
-@router.get("/", status_code=status.HTTP_200_OK, response_model=ClientDashboardResponse|FreelancerDashboardResponse)
+@router.get("", status_code=status.HTTP_200_OK, response_model=ClientDashboardResponse|FreelancerDashboardResponse)
 async def dashboard(db: db_dependency, user: user_dependency):
 
     print(user.get('role'))

@@ -133,7 +133,7 @@ async def accept_project(user: user_dependency, db: db_dependency, project_id: i
     }
 
 
-@router.patch("/projects/{project_id}/complete", status_code=status.HTTP_200_OK)
+@router.patch("/{project_id}/complete", status_code=status.HTTP_200_OK)
 async def complete_project(user: user_dependency, db: db_dependency, project_id: int):
 
     project = db.query(Project).filter(
@@ -166,7 +166,7 @@ async def complete_project(user: user_dependency, db: db_dependency, project_id:
     }
 
 
-@router.patch("/projects/{project_id}/cancel", status_code=status.HTTP_200_OK)
+@router.patch("/{project_id}/cancel", status_code=status.HTTP_200_OK)
 async def cancel_project(user: user_dependency, db: db_dependency, project_id: int):
 
     project = db.query(Project).filter(

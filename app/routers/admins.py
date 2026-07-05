@@ -19,12 +19,12 @@ async def get_all_users(db: db_dependency, user: user_dependency):
     return db.query(User).all()
 
 
-@router.patch("/admin/users/{user_id}/role")
+@router.patch("/users/{user_id}/role")
 async def add_admin(user: user_dependency, db: db_dependency, user_id: int):
-    # if user.get('role') != UserType.ADMIN:
-    #     raise HTTPException(
-    #         status_code=status.HTTP_403_FORBIDDEN, detail='Admin access required'
-    #     )
+    if user.get('role') != UserType.ADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail='Admin access required'
+        )
     theuser = db.query(User).filter(User.id == user_id).first()
     if theuser.role == UserType.ADMIN:
         raise HTTPException(
@@ -37,7 +37,7 @@ async def add_admin(user: user_dependency, db: db_dependency, user_id: int):
     }
 
 
-@router.get("/admins", status_code=status.HTTP_200_OK)
+@router.get("/", status_code=status.HTTP_200_OK)
 async def get_all_admins(user: user_dependency, db: db_dependency):
     if user.get('role') != UserType.ADMIN:
         raise HTTPException(
