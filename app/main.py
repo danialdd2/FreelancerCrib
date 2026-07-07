@@ -14,3 +14,6 @@ app.include_router(auth.router)
 app.include_router(ratings.router)
 app.include_router(notification.router)
 
+@app.get("/")
+async def root():
+    return {"status": "ok"}
