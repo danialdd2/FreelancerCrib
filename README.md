@@ -127,6 +127,17 @@ cd FreelancerCrib
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
+## Run with Docker
+
+```bash
+docker compose up --build
+```
+
+API:
+
+```
+http://localhost:8000/docs
+```
 > **Note:** The application uses **PostgreSQL** by default. The test suite is configured to use **SQLite**, so minor configuration changes may be required before running the tests.
 
 ## License
