@@ -77,6 +77,7 @@ This project allows clients to create projects, freelancers to submit bids, clie
 # Tech Stack
 
 - Python 3
+- Docker
 - FastAPI
 - SQLAlchemy
 - SQLite
