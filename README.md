@@ -118,7 +118,7 @@ app/
 
 ## API Docs
 
-https://freelancercrib-production.up.railway.app/docs
+https://freelancercrib.up.railway.app/docs
 
 ## Run Locally
 
